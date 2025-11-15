@@ -1,6 +1,8 @@
 // import logo from './logo.svg';
 import './App.css';
 import { useState, useMemo, useCallback } from "react";
+import { useDouble } from './hooks/useDouble';
+
 
 function App() {
   const [number, setNumber] = useState(0)
@@ -15,6 +17,8 @@ function App() {
   }, [number]) 
 
   //useCallback запам'ятовує всю функцію і дивиться чи вже використовувалась якщо так то просто бере і не оновлює
+
+  const doubledNumber = useDouble(number); // власний хук 
 
 
   const resulFunck = useCallback(()=> {
@@ -33,6 +37,7 @@ function App() {
       <p>minesNumber = {minesNumber}</p>
 
       <p>result (addNumber + minesNumber) = {resulFunck()}</p>
+      <p>doubledNumber (власний хук обрахунок) = {doubledNumber}</p>
     </div>
   );
 }
